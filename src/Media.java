@@ -1,4 +1,5 @@
-//Clas that defines the Media Object
+//Coded by Drew Cornfield and Saad Iqbal
+//Class that defines the Media Object
 
 
 public class Media {
