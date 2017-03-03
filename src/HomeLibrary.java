@@ -1,4 +1,4 @@
-//Coded by Saad Iqbal
+//Coded by Saad Iqbal and Drew CornField 
 //Username for application is : admin
 //password for application is  : password
 
@@ -126,7 +126,9 @@ public class HomeLibrary extends Database {
                                 	public void actionPerformed(ActionEvent e) {
                                 		String name = textField_3.getText();
                                 		String borrowedItems[] = new String[getSize()];
-                                		borrowedItems = findBorrowedItems(name);
+                                		borrowedItems = findBorrowedItems(name); 
+                                		//Clears the current Jlist and then uses a forloop to add the items that the person is borrowing
+                                		list.clear();
                                 		for (int i =0; i < borrowedItems.length; i++) {
                                 		list.add(borrowedItems[i]);
                                 		}
@@ -181,6 +183,7 @@ public class HomeLibrary extends Database {
                                          }
                                         });
                                         
+                                        //Button for Item Search panel, makes the item search visible and rest invisible (except the parent panel)
                                         Button itemsearch = new Button("Item Search");
                                         itemsearch.addActionListener(new ActionListener() {
                                          public void actionPerformed(ActionEvent e) {
@@ -190,9 +193,10 @@ public class HomeLibrary extends Database {
                                          }
                                         });
                                         itemsearch.setBounds(10, 10, 94, 44);
+                                        
                                         AdminPanel.add(itemsearch);
                                         
-                                        
+                                        //Person search button to make the person search panel visible and rest invisible. (except the parent panel)
                                         Button personsearch = new Button("Person Search");
                                         personsearch.addActionListener(new ActionListener() {
                                          public void actionPerformed(ActionEvent e) {
@@ -203,6 +207,8 @@ public class HomeLibrary extends Database {
                                         });
                                         personsearch.setBounds(127, 10, 106, 44);
                                         AdminPanel.add(personsearch);
+                                        
+                                        //LoananItem button to make the panel visible for it and rest invisible (except for the parent panel)
                                         
                                         Button loananitem = new Button("Loan an Item");
                                         loananitem.addActionListener(new ActionListener() {
@@ -217,6 +223,8 @@ public class HomeLibrary extends Database {
                                         loananitem.setBounds(239, 10, 94, 44);
                                         AdminPanel.add(loananitem);
                                         
+                                        
+                                        //Button for logout, sets all panels to invisible except the login one (need a way to reset all the information modified)
                                         JButton btnNewButton_2 = new JButton("LOGOUT");
                                         btnNewButton_2.addActionListener(new ActionListener() {
                                         	public void actionPerformed(ActionEvent e) {                                        		  
@@ -341,6 +349,11 @@ public class HomeLibrary extends Database {
                         
                         //LOGIN INFORMATION FOR ADMIN STORED HERE
                              JButton EnterLogin = new JButton("Login");
+                             
+                             JCheckBox chckbxRememberMe = new JCheckBox("Remember Me");
+                             chckbxRememberMe.setBounds(22, 250, 265, 23);
+                             LoginPanel.add(chckbxRememberMe);
+                 
                              EnterLogin.addActionListener(new ActionListener() {
                               public void actionPerformed(ActionEvent e) {
                             //gets values from textfield and key/key2 are the assigned user and password currently.
@@ -352,7 +365,12 @@ public class HomeLibrary extends Database {
                               //assigns the text in the password field to a variable called password
 							  String pass = passwordField.getText(); //hidden for security reasons
                              //Credential authentication. Takes to next frame if credentials are correct.
+                             
                               if (username.equals(key) && pass.equals(key2) ) {
+                            	  if (!chckbxRememberMe.isSelected()) {
+                                	  textField.setText("");
+                                	  passwordField.setText("");
+                                  }
                                AdminPanel.setVisible(true);
                                LoginPanel.setVisible(false);
                               }
@@ -374,11 +392,7 @@ public class HomeLibrary extends Database {
                              });
                              EnterLogin.setBounds(235, 182, 98, 64);
                              LoginPanel.add(EnterLogin);
-                             
-                             JCheckBox chckbxRememberMe = new JCheckBox("Remember Me");
-                             chckbxRememberMe.setBounds(22, 250, 265, 23);
-                             LoginPanel.add(chckbxRememberMe);
-                 
+                        
                  
  }
 }

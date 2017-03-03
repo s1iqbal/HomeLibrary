@@ -12,7 +12,7 @@ public class Media {
  
  //Constructor for a Media Object
  public Media(String type, String title , String author, int year, String location, String borrowername){
-	 
+	 		
 	  this.Title = title;
 	  this.Author = author;
 	  this.Year = year;
@@ -42,6 +42,9 @@ public String getBorrowerName() {
 }
 public String getItemLocation() {
 	return Location;
+}
+public int getYear() {
+	return Year;
 }
 
  
