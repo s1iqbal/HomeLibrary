@@ -1,4 +1,4 @@
-//Coded by Saad Iqbal and Drew CornField 
+//Coded by Saad Iqbal
 //Username for application is : admin
 //password for application is  : password
 
